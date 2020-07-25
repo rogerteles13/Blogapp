@@ -34,6 +34,10 @@ app.get("/", (req, res) => {
 
 app.use("/admin", admin)
 
+//Carregando Modulos
+
+
+
 //outros
 const PORT = 8081
 app.listen(PORT, () => {
