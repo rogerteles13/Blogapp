@@ -1,8 +1,7 @@
 //carregando os módulos
 const express = require("express")
 const handlebars = require("express-handlebars")
-const bodyparser = require("body-parser")
-const { userInfo } = require("os")
+const bodyParser = require("body-parser")
 const app = express()
 const admin = require("./routes/admin")
 const path = require("path")
@@ -11,8 +10,8 @@ const path = require("path")
 //configurações
 
 //bodyparer
-app.use(bodyparser.urlencoded({extended: true}))
-app.use(bodyparser.json())
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json())
 
 //handlebars
 app.engine('handlebars', handlebars({defaultLayout: 'main'}))
@@ -20,19 +19,21 @@ app.set('view engine', 'handlebars')
 
 //moongoose (em breve)...
 
-//configurndo a pasta public, arquivos estáticos
+//configurndo a pasta public, dizendo pro express que os arq. estáticos estão na pasta public
 
-app.use(express.static(path.join(__dirname, "public")))
+app.use(express.static(path.join(__dirname,"public")))
 
 
 //rotas
+
+app.use("/admin", admin)
 
 app.get("/", (req, res) => {
     res.send("Rota principal")
 })
 
 
-app.use("/admin", admin)
+
 
 //Carregando Modulos
 

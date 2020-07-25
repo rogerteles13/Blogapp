@@ -1,8 +1,5 @@
-//const express = require("express")
-//const router = express.Router()
-
-/*const express = require('express')
-const router = require('express').Router();
+const express = require("express")
+const router = express.Router()
 
 //rotas admin
 
@@ -19,9 +16,9 @@ router.get("/categorias", (req, res) => {
     res.send("Páginas categorias")
 })
 
-module.exports = router*/
+module.exports = router
 
-const express = require('express')
+/*const express = require('express')
 const router = require('express').Router();
 
 
@@ -38,6 +35,6 @@ router.get("/categorias", (req, res) => {
 })
 
 
-module.exports = router
+module.exports = router*/
 
 
