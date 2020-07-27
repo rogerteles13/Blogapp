@@ -5,7 +5,7 @@ const bodyParser = require("body-parser")
 const app = express()
 const admin = require("./routes/admin")
 const path = require("path")
-//const mongoose = require("mongoose")
+const mongoose = require("mongoose")
 
 //configurações
 
@@ -17,7 +17,13 @@ app.use(bodyParser.json())
 app.engine('handlebars', handlebars({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
 
-//moongoose (em breve)...
+//moongoose
+
+mongoose.connect("mongodb://localhost/blogapp").then(() => {
+    console.log("Conetado ao Mongo")
+}).catch((err) => {
+    console.log("Erro ao se conectar ao Mongo", +err)
+})
 
 //configurndo a pasta public, dizendo pro express que os arq. estáticos estão na pasta public
 

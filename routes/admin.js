@@ -1,6 +1,13 @@
 const express = require("express")
 const router = express.Router()
 
+//incluir dados do formulário no banco de dados.
+const mongoose = require("mongoose")
+const { Console } = require("console")
+require("../models/Categoria")
+const Categoria = mongoose.model("categorias")
+
+
 //rotas admin
 
 router.get('/',(req, res)=> {
@@ -14,6 +21,21 @@ router.get("/posts", (req, res) => {
 
 router.get("/categorias", (req, res) => {
     res.send("Páginas categorias")
+})
+
+//rota que vai puxar os dados do formulário
+
+router.post("/categorias/nova", (req, res) => {
+    const novaCategoria = {
+        nome: req.body.nome,
+        slug: req.body.slug
+    }
+
+    new Categoria(novaCategoria).save().then(() => {
+        console.log("categoria salva com sucesso!")
+    }).catch((err) => {
+        console.log("Erro ao salvar a categoria!")
+    })
 })
 
 module.exports = router
